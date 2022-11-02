@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    <div class="container-navbar-brand">
+      <a class="navbar-brand" href="javascript:void(0)"><img src="assets\brand.svg" alt="logo" width="150px"
+          height="100px"></a>
+    </div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon nav-icon">
+        <fa-icon [icon]="menu"></fa-icon>
+      </span>
+    </button>
+    <div class="collapse navbar-collapse flex-wrap" id="collapsibleNavbar">
+      <ul class="navbar-nav flex-wrap">
+        <li class="nav-item">
+          <a class="nav-link nav-icon" href="#">
+            <fa-icon [icon]="face"></fa-icon>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-icon" href="#">
+            <fa-icon [icon]="insta"></fa-icon>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-icon" href="#">
+            <fa-icon [icon]="link"></fa-icon>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-icon" href="#">
+            <fa-icon [icon]="git"></fa-icon>
+          </a>
+        </li>
+        <li class="nav-item nav-icon">
+          <a class="nav-link" href="#">
+            <fa-icon [icon]="what"></fa-icon>
+          </a>
+        </li>
+      </ul>
+      <div class="botones d-flex">
+        <button (click)="cambiarTema()" class="btn">
+          <fa-icon [icon]="dark" *ngIf="temaActual === 'default'"></fa-icon>
+          <fa-icon [icon]="light" *ngIf="temaActual === 'dark'"></fa-icon>
+        </button>
+        <button type="button" class="btn" *ngIf="estaLogeado()">
+          <fa-icon [icon]="user"></fa-icon>
+        </button>
+        <button type="button" class="btn" *ngIf="!estaLogeado()">
+          <fa-icon [icon]="login"></fa-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>

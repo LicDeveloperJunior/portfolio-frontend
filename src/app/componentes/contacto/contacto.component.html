@@ -1,0 +1,26 @@
+<section class="espaciado text-center">
+  <div class="container p-3">
+    <div class="titulo">
+      <h1>Contáctame</h1>
+    </div>
+    <h4>¿Tienes alguna pregunta?</h4>
+    <h5>Estoy a tu servicio</h5>
+    <div class="row" *ngIf="this.usuario">
+      <div class="col">
+        <p>
+          <fa-icon [icon]="telef"></fa-icon><br>{{this.usuario.telefono}}
+        </p>
+      </div>
+      <div class="col">
+        <p>
+          <fa-icon [icon]="lugar"></fa-icon><br>{{this.usuario.domicilio}}
+        </p>
+      </div>
+      <div class="col">
+        <p>
+          <fa-icon [icon]="email"></fa-icon><br>{{this.usuario.email}}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

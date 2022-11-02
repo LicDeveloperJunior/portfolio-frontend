@@ -1,0 +1,42 @@
+.navbar {
+  z-index: 10;
+
+  .container-fluid {
+    fa-icon {
+      font-size: 1.5em;
+      color: var(--textoPrimario);
+      margin: 0 1em;
+      &:hover {
+        font-size: 1.6em;
+      }
+    }
+
+    .navbar-toggler {
+      .navbar-toggler-icon {
+        background-image: none;
+        display: inline;
+      }
+    }
+
+    .navbar-collapse {
+      justify-content: flex-end;
+    }
+  }
+}
+
+
+@media (max-width: 999px) {
+  .show {
+    display: flex;
+  }
+
+  .container-fluid {
+    .navbar-collapse {
+      padding: 0 30px;
+
+      .navbar-nav {
+        flex-direction: row;
+      }
+    }
+  }
+}
