@@ -1,9 +1,9 @@
 <ng-container *ngIf="this.show">
-  <div class="modal-container w-100 d-flex align-items-center justify-content-center">
-    <div class="modal-box h-100 align-items-center text-center">
-      <div class="modal-header">
-        <h5>{{titulo}}</h5>
-        <button class="close" aria-label="close" type="button" (click)="this.toggleModal()">
+  <div class="modal-container w-100 d-flex flex-column align-items-center justify-content-center ">
+    <div class="modal-box text-center">
+      <div class="modal-header m-2 d-flex align-items-center">
+        <h5 class="align-self-end">{{titulo}}</h5>
+        <button class="close btn btn-danger" aria-label="close" type="button" (click)="this.toggleModal()">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
