@@ -2,10 +2,33 @@
   z-index: 10;
 
   .container-fluid {
+    .container-navbar-brand .navbar-brand {
+      width: 150px;
+      height: 100px;
+
+      span {
+        font-family: 'Great Vibes', cursive;
+        font-size: 2.5em;
+      }
+
+      .green {
+        color: rgb(50, 200, 50);
+      }
+
+      .blanco {
+        color: var(--textoPrimario);
+      }
+
+      .debil {
+        color: white;
+      }
+    }
+
     fa-icon {
       font-size: 1.5em;
       color: var(--textoPrimario);
       margin: 0 1em;
+
       &:hover {
         font-size: 1.6em;
       }
