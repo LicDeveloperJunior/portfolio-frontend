@@ -1,9 +1,11 @@
 <div class="espaciado info w-100 d-md-flex">
   <div class="saludo h-100 w-100 d-flex flex-column align-items-center justify-content-center text-center">
-    <p><span class="titulo">¡Hola!</span>
-      <br>Me llamo <span class="cursiva">Agustin Collueque</span>
-      <br>Y soy <b>programador web full stack</b>. <fa-icon [icon]="emoteInicio" class="ms-2"></fa-icon>
-    </p>
+    <div class="container">
+      <p><span class="titulo">¡Hola!</span>
+        <br>Me llamo <span class="cursiva">Agustin Collueque</span>
+        <br>Y soy <b>programador web full stack</b>. <fa-icon [icon]="emoteInicio" class="ms-2"></fa-icon>
+      </p>
+    </div>
     <div class="container" *ngIf="estaLogeado()">
       <button type="button" class="btn btn-outline-secondary" *ngIf="this.usuario" (click)="modalEditar.toggleModal()">
         Editar Usuario
@@ -61,7 +63,7 @@
               id="fotoUsuario" placeholder="url foto" required>
           </div>
         </form>
-        <button type="button" class="btn btn-success" (click)="editarUsuario(editForm); modalEditar.toggleModal()">Editar</button>
+        <button type="button" class="btn btn-success m-2" (click)="editarUsuario(editForm); modalEditar.toggleModal()">Editar</button>
       </app-modal>
     </div>
   </div>

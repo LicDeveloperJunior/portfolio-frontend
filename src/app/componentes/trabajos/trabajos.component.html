@@ -27,7 +27,7 @@
                 required>
             </div>
           </form>
-          <button class="btn btn-success" type="submit"
+          <button class="btn btn-success m-2" type="submit"
             (click)="agregarTrabajo(addForm); modalAgregar.toggleModal()">Agregar</button>
         </app-modal>
       </div>
@@ -67,7 +67,7 @@
                   placeholder="imagen" required>
               </div>
             </form>
-            <button class="btn btn-success" type="submit"
+            <button class="btn btn-success m-2" type="submit"
               (click)="editarTrabajo(editForm); modalEditar.toggleModal()">Editar</button>
           </app-modal>
         </div>
@@ -77,7 +77,7 @@
           </button>
           <app-modal #modalEliminar [titulo]="'Eliminar Formación'">
             <p>¿Realmente deseas eliminar <b>{{this.trabajo.nombre}}</b>?</p>
-            <button class="btn btn-danger" type="submit"
+            <button class="btn btn-danger m-2" type="submit"
               (click)="eliminarTrabajo(this.trabajo.idTrab); modalEliminar.toggleModal()">Eliminar</button>
           </app-modal>
         </div>

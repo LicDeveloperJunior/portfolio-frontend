@@ -20,7 +20,7 @@
             <input type="text" ngModel name="porcentaje" class="form-control" id="porcHab" placeholder="%" required>
           </div>
         </form>
-        <button class="btn btn-success" type="submit" (click)="agregarHabilidad(addForm); modalAgregar.toggleModal()">Agregar</button>
+        <button class="btn btn-success m-2" type="submit" (click)="agregarHabilidad(addForm); modalAgregar.toggleModal()">Agregar</button>
       </app-modal>
     </div>
   </div>
@@ -59,7 +59,7 @@
                     id="porcHab" placeholder="%" required>
                 </div>
               </form>
-              <button class="btn btn-success" type="submit" (click)="editarHabilidad(editForm); modalEditar.toggleModal()">Editar</button>
+              <button class="btn btn-success m-2" type="submit" (click)="editarHabilidad(editForm); modalEditar.toggleModal()">Editar</button>
             </app-modal>
           </div>
           <div id="modal-remove">
@@ -68,7 +68,7 @@
             </button>
             <app-modal #modalEliminar [titulo]="'Eliminar Habilidad'">
               <p>¿Realmente deseas eliminar <b>{{this.habilidad.nombre}}</b>?</p>
-              <button class="btn btn-danger" type="submit"
+              <button class="btn btn-danger m-2" type="submit"
                 (click)="eliminarHabilidad(this.habilidad.idHab); modalEliminar.toggleModal()">Eliminar</button>
             </app-modal>
           </div>
