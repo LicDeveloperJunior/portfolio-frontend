@@ -50,12 +50,12 @@
                 </div>
                 <div class="form-group">
                   <label for="urlLogo">URL logo</label>
-                  <input type="text" ngModel="{{editHabilidad?.logo}}" name="logo" class="form-control" id="urlLogo"
+                  <input type="url" ngModel="{{editHabilidad?.logo}}" name="logo" class="form-control" id="urlLogo"
                     placeholder="logo" required>
                 </div>
                 <div class="form-group">
                   <label for="nombreHab">Porcentaje</label>
-                  <input type="text" ngModel="{{editHabilidad?.porcentaje}}" name="porcentaje" class="form-control"
+                  <input type="number" ngModel="{{editHabilidad?.porcentaje}}" name="porcentaje" class="form-control"
                     id="porcHab" placeholder="%" required>
                 </div>
               </form>

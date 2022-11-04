@@ -7,7 +7,7 @@ import { faSadCry } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./pagina-error.component.less']
 })
 export class PaginaErrorComponent implements OnInit {
-  caritaTriste = faSadCry;
+  iconoPagError = faSadCry;
   constructor() { }
 
   ngOnInit(): void {

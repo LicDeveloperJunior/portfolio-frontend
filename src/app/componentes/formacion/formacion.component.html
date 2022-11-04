@@ -18,11 +18,11 @@
             </div>
             <div class="form-group">
               <label for="enlaceForm">Enlace</label>
-              <input type="text" ngModel name="enlace" class="form-control" id="enlaceForm" placeholder="http://www.example.com" required>
+              <input type="url" ngModel name="enlace" class="form-control" id="enlaceForm" placeholder="http://www.example.com" required>
             </div>
             <div class="form-group">
               <label for="imagenForm">URL Imagen</label>
-              <input type="text" ngModel name="imagen" class="form-control" id="imagenForm" placeholder="URL" required>
+              <input type="url" ngModel name="imagen" class="form-control" id="imagenForm" placeholder="URL" required>
             </div>
           </form>
           <button class="btn btn-success m-2" type="submit" (click)="agregarFormacion(addForm); modalAgregar.toggleModal()">Agregar</button>
@@ -53,22 +53,22 @@
               <div class="form-group">
                 <label for="tituloHab">Titulo</label>
                 <input type="text" ngModel="{{editFormacion?.titulo}}" name="titulo" class="form-control"
-                  id="tituloForm" placeholder="titulo" required>
+                  id="tituloHab" placeholder="titulo" required>
               </div>
               <div class="form-group">
-                <label for="tiempoForm">Tiempo</label>
+                <label for="tiempoHab">Tiempo</label>
                 <input type="text" ngModel="{{editFormacion?.tiempo}}" name="tiempo" class="form-control"
-                  id="tiempoForm" placeholder="tiempo" required>
+                  id="tiempoHab" placeholder="tiempo" required>
               </div>
               <div class="form-group">
                 <label for="urlimagen">URL imagen</label>
-                <input type="text" ngModel="{{editFormacion?.imagen}}" name="imagen" class="form-control" id="urlimagen"
+                <input type="url" ngModel="{{editFormacion?.imagen}}" name="imagen" class="form-control" id="urlimagen"
                   placeholder="imagen" required>
               </div>
               <div class="form-group">
-                <label for="enlaceForm">enlace</label>
-                <input type="text" ngModel="{{editFormacion?.enlace}}" name="enlace" class="form-control"
-                  id="enlaceForm" placeholder="http://www.example.com" required>
+                <label for="enlaceHab">enlace</label>
+                <input type="url" ngModel="{{editFormacion?.enlace}}" name="enlace" class="form-control"
+                  id="enlaceHab" placeholder="http://www.example.com" required>
               </div>
             </form>
             <button class="btn btn-success m-2" type="submit" (click)="editarFormacion(editForm); modalEditar.toggleModal()">Editar</button>

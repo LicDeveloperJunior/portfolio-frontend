@@ -13,52 +13,52 @@
       <app-modal #modalEditar [titulo]="'Editar Usuario'">
         <form #editForm="ngForm">
           <div class="form-group">
-            <label for="id">Id: </label>
+            <label for="idUsuario">Id: </label>
             <input type="hidden" ngModel="{{this.usuario?.id}}" name="id" class="form-control"
               id="idUsuario" placeholder="id" required>
           </div>
           <div class="form-group">
-            <label for="nombres">Nombres: </label>
+            <label for="nombresUsuario">Nombres: </label>
             <input type="text" ngModel="{{this.usuario?.nombre}}" name="nombre" class="form-control"
               id="nombresUsuario" placeholder="nombres" readonly>
           </div>
           <div class="form-group">
-            <label for="apellidos">Apellidos: </label>
+            <label for="apellidosUsuario">Apellidos: </label>
             <input type="text" ngModel="{{this.usuario?.apellido}}" name="apellido" class="form-control"
-              id="apellidoUsuario" placeholder="apellido" readonly>
+              id="apellidosUsuario" placeholder="apellido" readonly>
           </div>
           <div class="form-group">
-            <label for="fecha de nacimiento">Fecha de Nacimiento: </label>
+            <label for="fechaUsuario">Fecha de Nacimiento: </label>
             <input type="text" ngModel="{{this.usuario?.fechaNacimiento}}" name="fechaNacimiento"
               class="form-control" id="fechaUsuario" placeholder="fechaNacimiento" readonly>
           </div>
           <div class="form-group">
-            <label for="estado civil">Estado Civil: </label>
+            <label for="estadoUsuario">Estado Civil: </label>
             <input type="text" ngModel="{{this.usuario?.estado}}" name="estado" class="form-control" id="estadoUsuario"
               placeholder="estado civil" required>
           </div>
           <div class="form-group">
-            <label for="domicilio">Domicilio: </label>
+            <label for="domicilioUsuario">Domicilio: </label>
             <input type="text" ngModel="{{this.usuario?.domicilio}}" name="domicilio" class="form-control"
               id="domicilioUsuario" placeholder="domicilio" required>
           </div>
           <div class="form-group">
-            <label for="telefono">Telefono: </label>
+            <label for="telefonoUsuario">Telefono: </label>
             <input type="tel" ngModel="{{this.usuario?.telefono}}" name="telefono" class="form-control"
               id="telefonoUsuario" placeholder="telefono" required>
           </div>
           <div class="form-group">
-            <label for="email">Email: </label>
+            <label for="emailUsuario">Email: </label>
             <input type="email" ngModel="{{this.usuario?.email}}" name="email" class="form-control"
               id="emailUsuario" placeholder="email" readonly>
           </div>
           <div class="form-group">
-            <label for="descripcion">Descripcion: </label>
+            <label for="descUsuario">Descripcion: </label>
             <input type="text" ngModel="{{this.usuario?.descripcion}}" name="descripcion" class="form-control"
               id="descUsuario" placeholder="descripcion" required>
           </div>
           <div class="form-group">
-            <label for="foto de perfil">Url Foto: </label>
+            <label for="fotoUsuario">Url Foto: </label>
             <input type="text" ngModel="{{this.usuario?.foto}}" name="foto" class="form-control"
               id="fotoUsuario" placeholder="url foto" required>
           </div>
