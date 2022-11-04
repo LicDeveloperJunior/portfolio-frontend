@@ -5,7 +5,6 @@ import { faTrashCan, faPlus, faPencil } from '@fortawesome/free-solid-svg-icons'
 import { ITrabajo } from 'src/app/modelos/ITrabajo';
 import { TrabajoService } from 'src/app/servicios/api/trabajo.service';
 import { LoginService } from 'src/app/servicios/login/login.service';
-import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-trabajos',
@@ -13,7 +12,6 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./trabajos.component.less']
 })
 export class TrabajosComponent implements OnInit {
-  private url: string = environment.urlApiBackend;
   public trabajos!: ITrabajo[];
   public editTrabajo?: ITrabajo;
   agregarIcon = faPlus;

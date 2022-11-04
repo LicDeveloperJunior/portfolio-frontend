@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
 import {HttpClient} from '@angular/common/http'
 import { Observable } from 'rxjs';
 import { IUsuario } from 'src/app/modelos/IUsuario';
@@ -9,7 +8,7 @@ import { IUsuario } from 'src/app/modelos/IUsuario';
 })
 export class UsuarioService {
 
-  private url:string = environment.urlApiBackend;
+  private url:string = 'https://portfolioacv.herokuapp.com';
 
   constructor(private http:HttpClient) { }
 

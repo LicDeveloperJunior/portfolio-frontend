@@ -2,13 +2,12 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IFormacion } from 'src/app/modelos/IFormacion';
-import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FormacionService {
-  private url:string = environment.urlApiBackend;
+  private url:string = 'https://portfolioacv.herokuapp.com';
   constructor(private http: HttpClient) { }
 
   public obtenerFormacion(id:Number):Observable<IFormacion> {

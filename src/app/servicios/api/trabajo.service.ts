@@ -1,14 +1,13 @@
-import { HttpBackend, HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ITrabajo } from 'src/app/modelos/ITrabajo';
-import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TrabajoService {
-  private url:string = environment.urlApiBackend;
+  private url:string = 'https://portfolioacv.herokuapp.com';
   constructor(private http: HttpClient) { }
 
   public obtenerTrabajo(id:number):Observable<ITrabajo> {

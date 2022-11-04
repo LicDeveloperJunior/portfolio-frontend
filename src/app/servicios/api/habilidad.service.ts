@@ -1,14 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, ObservedValueOf } from 'rxjs';
+import { Observable } from 'rxjs';
 import { IHabilidad } from 'src/app/modelos/IHabilidad';
-import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HabilidadService {
-  private url:string = environment.urlApiBackend;
+  private url:string = 'https://portfolioacv.herokuapp.com';
   constructor(private http: HttpClient) { }
 
   public obtenerHabilidad(id:number):Observable<IHabilidad> {

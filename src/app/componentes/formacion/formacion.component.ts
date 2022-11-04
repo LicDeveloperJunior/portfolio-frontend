@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { IFormacion } from 'src/app/modelos/IFormacion';
 import { FormacionService } from 'src/app/servicios/api/formacion.service';
 import { faTrashCan, faPlus, faPencil } from '@fortawesome/free-solid-svg-icons';
-import { environment } from 'src/environments/environment';
 import { NgForm } from '@angular/forms';
 import { LoginService } from 'src/app/servicios/login/login.service';
 
@@ -13,7 +12,6 @@ import { LoginService } from 'src/app/servicios/login/login.service';
   styleUrls: ['./formacion.component.less']
 })
 export class FormacionComponent implements OnInit {
-  private url: string = environment.urlApiBackend;
   public formaciones!: IFormacion[];
   editFormacion?: IFormacion;
   agregarIcon = faPlus;
