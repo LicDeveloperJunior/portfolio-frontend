@@ -46,21 +46,23 @@
           <fa-icon [icon]="user"></fa-icon>
         </button>
         <app-modal #logoutModal [titulo]="'¿Seguro que quieres cerrar sesión?'">
-          <button class="btn btn-success" >Cerrar Sesión</button>
+          <button class="btn btn-success" (click)="cerrarSesion(); logoutModal.toggleModal()">Cerrar Sesión</button>
         </app-modal>
         <button type="button" class="btn" *ngIf="!estaLogeado()" (click)="loginModal.toggleModal()">
           <fa-icon [icon]="login"></fa-icon>
         </button>
         <app-modal #loginModal [titulo]="'Iniciar Sesión'">
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="text" ngModel name="email" class="form-control" id="email" placeholder="ejemplo@gmail.com" required>
-          </div>
-          <div class="form-group">
-            <label for="contrasenia">Contraseña</label>
-            <input type="password" ngModel name="contrasenia" class="form-control" id="contrasenia" placeholder="********" required>
-          </div>
-          <button class="btn btn-success">Iniciar Sesion</button>
+          <form #loginForm="ngForm" (ngSubmit)="logear(loginForm)">
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="text" ngModel name="email" class="form-control" id="email" placeholder="ejemplo@gmail.com" required>
+            </div>
+            <div class="form-group">
+              <label for="contrasenia">Contraseña</label>
+              <input type="password" ngModel name="contrasenia" class="form-control" id="contrasenia" placeholder="********" required>
+            </div>
+          </form>
+          <button class="btn btn-success" (click)="logear(loginForm); loginModal.toggleModal()">Iniciar Sesion</button>
         </app-modal>
       </div>
     </div>

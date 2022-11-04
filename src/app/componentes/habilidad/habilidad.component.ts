@@ -4,6 +4,7 @@ import { IHabilidad } from 'src/app/modelos/IHabilidad';
 import { HabilidadService } from 'src/app/servicios/api/habilidad.service';
 import { faTrashCan, faPlus, faPencil } from '@fortawesome/free-solid-svg-icons';
 import { NgForm } from '@angular/forms';
+import { LoginService } from 'src/app/servicios/login/login.service';
 
 @Component({
   selector: 'app-habilidad',
@@ -16,7 +17,8 @@ export class HabilidadComponent implements OnInit {
   agregarIcon = faPlus;
   editarIcon = faPencil;
   editHabilidad?: IHabilidad;
-  constructor(private habilidadService :HabilidadService) { }
+  constructor(private habilidadService :HabilidadService,
+    private loginService :LoginService) { }
 
   ngOnInit(): void {
     this.obtenerHabildades();
@@ -35,7 +37,6 @@ export class HabilidadComponent implements OnInit {
   }
 
   public agregarHabilidad(formHab: NgForm) {
-    console.log(formHab.value);
     this.habilidadService.agregarHabilidad(formHab.value).subscribe({
       next: () => {
         formHab.reset();
@@ -59,7 +60,6 @@ export class HabilidadComponent implements OnInit {
   }
 
   public editarHabilidad(formHab: NgForm) {
-    console.log(formHab.value);
     this.habilidadService.actualizarHabilidad(formHab.value).subscribe({
       next: () => {
         formHab.reset();
@@ -72,6 +72,6 @@ export class HabilidadComponent implements OnInit {
   }
 
   estaLogeado():boolean {
-    return false;
+    return this.loginService.estaLogeado();
   }
 }

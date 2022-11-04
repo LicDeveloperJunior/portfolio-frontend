@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { faUserGraduate } from '@fortawesome/free-solid-svg-icons';
 import { IUsuario } from 'src/app/modelos/IUsuario';
 import { UsuarioService } from 'src/app/servicios/api/usuario.service';
+import { LoginService } from 'src/app/servicios/login/login.service';
 
 @Component({
   selector: 'app-inicio',
@@ -14,7 +15,8 @@ export class InicioComponent implements OnInit {
   emoteInicio = faUserGraduate;
   usuario?:IUsuario;
 
-  constructor(private usuarioService: UsuarioService) { }
+  constructor(private usuarioService: UsuarioService,
+    private loginService: LoginService) { }
 
   ngOnInit(): void {
     this.obtenerUsuario();
@@ -44,10 +46,7 @@ export class InicioComponent implements OnInit {
   }
 
   estaLogeado():boolean {
-    if (this.usuario != null || undefined) {
-      return true;
-    }
-    return false;
+    return this.loginService.estaLogeado();
   }
 
 }

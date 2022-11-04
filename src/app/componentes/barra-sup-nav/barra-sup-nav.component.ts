@@ -1,9 +1,11 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { faInstagram, faFacebook, faWhatsapp, faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faMoon, faSun, faBars, faUserSecret, faRightToBracket } from '@fortawesome/free-solid-svg-icons';
 import { IUsuario } from 'src/app/modelos/IUsuario';
 import { UsuarioService } from 'src/app/servicios/api/usuario.service';
+import { LoginService } from 'src/app/servicios/login/login.service';
 import { TemaService } from 'src/app/servicios/multitemas/tema.service';
 
 @Component({
@@ -12,7 +14,6 @@ import { TemaService } from 'src/app/servicios/multitemas/tema.service';
   styleUrls: ['./barra-sup-nav.component.less']
 })
 export class BarraSupNavComponent implements OnInit {
-  datos: any;
   insta = faInstagram;
   face = faFacebook;
   what = faWhatsapp;
@@ -28,7 +29,8 @@ export class BarraSupNavComponent implements OnInit {
   usuario :IUsuario | undefined;
 
   constructor(private temaServicio: TemaService,
-    private usuarioService :UsuarioService) {
+    private usuarioService :UsuarioService,
+    private loginService :LoginService) {
     this.temaActual = this.temaServicio.getTema();
     this.temaServicio.setTema(this.temaServicio.getTema());
   }
@@ -59,9 +61,19 @@ export class BarraSupNavComponent implements OnInit {
   }
 
   estaLogeado():boolean {
-    if (this.usuario != null || undefined) {
-      return true;
-    }
-    return false;
+    return this.loginService.estaLogeado();
+  }
+
+  public logear(formLogin :NgForm){
+    this.loginService.login(formLogin.value)
+    .then(response => {console.log("Has iniciado sesión")})
+    .catch(error => console.log("No se pudo iniciar sesión"))
+    .finally(() => formLogin.reset())
+  }
+
+  public cerrarSesion() {
+    this.loginService.logout()
+    .then(() => {console.log('Se cerro la sesión')})
+    .catch(error => (console.log("No se pudo cerrar sesión")))
   }
 }

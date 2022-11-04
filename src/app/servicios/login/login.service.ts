@@ -16,7 +16,7 @@ export class LoginService {
     return signOut(this.auth);
   }
 
-  estaLogeado() {
-    return this.auth.currentUser;
+  estaLogeado():boolean {
+    return this.auth.currentUser != null;
   }
 }

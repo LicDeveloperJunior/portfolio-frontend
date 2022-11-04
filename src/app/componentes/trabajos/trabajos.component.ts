@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { faTrashCan, faPlus, faPencil } from '@fortawesome/free-solid-svg-icons';
 import { ITrabajo } from 'src/app/modelos/ITrabajo';
 import { TrabajoService } from 'src/app/servicios/api/trabajo.service';
+import { LoginService } from 'src/app/servicios/login/login.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -19,7 +20,8 @@ export class TrabajosComponent implements OnInit {
   editarIcon = faPencil;
   eliminarIcon = faTrashCan;
 
-  constructor(private trabajoService: TrabajoService) { }
+  constructor(private trabajoService: TrabajoService,
+    private loginService :LoginService) { }
 
   ngOnInit(): void {
     this.obtenerTrabajos();
@@ -37,7 +39,6 @@ export class TrabajosComponent implements OnInit {
   }
 
   public agregarTrabajo(formHab: NgForm) {
-    console.log(formHab.value);
     this.trabajoService.agregarTrabajo(formHab.value).subscribe({
       next: () => {
         formHab.reset();
@@ -61,7 +62,6 @@ export class TrabajosComponent implements OnInit {
   }
 
   public editarTrabajo(formHab: NgForm) {
-    console.log(formHab.value);
     this.trabajoService.actualizarTrabajo(formHab.value).subscribe({
       next: () => {
         formHab.reset();
@@ -74,6 +74,6 @@ export class TrabajosComponent implements OnInit {
   }
 
   estaLogeado(): boolean {
-    return false;
+    return this.loginService.estaLogeado();
   }
 }

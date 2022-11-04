@@ -5,6 +5,7 @@ import { FormacionService } from 'src/app/servicios/api/formacion.service';
 import { faTrashCan, faPlus, faPencil } from '@fortawesome/free-solid-svg-icons';
 import { environment } from 'src/environments/environment';
 import { NgForm } from '@angular/forms';
+import { LoginService } from 'src/app/servicios/login/login.service';
 
 @Component({
   selector: 'app-formacion',
@@ -19,7 +20,8 @@ export class FormacionComponent implements OnInit {
   editarIcon = faPencil;
   eliminarIcon = faTrashCan;
 
-  constructor(private formacionService: FormacionService) { }
+  constructor(private formacionService: FormacionService,
+    private loginService :LoginService) { }
 
   ngOnInit(): void {
     this.obtenerFormaciones();
@@ -60,7 +62,6 @@ export class FormacionComponent implements OnInit {
   }
 
   public editarFormacion(formHab: NgForm) {
-    console.log(formHab.value);
     this.formacionService.actualizarFormacion(formHab.value).subscribe({
       next: () => {
         formHab.reset();
@@ -73,6 +74,6 @@ export class FormacionComponent implements OnInit {
   }
 
   estaLogeado():boolean {
-    return false;
+    return this.loginService.estaLogeado();
   }
 }
