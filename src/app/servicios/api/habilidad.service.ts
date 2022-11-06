@@ -7,11 +7,7 @@ import { IHabilidad } from 'src/app/modelos/IHabilidad';
   providedIn: 'root'
 })
 export class HabilidadService {
-<<<<<<< HEAD
   private url:string = 'https://portfolioacv.herokuapp.com';
-=======
-  private url:string = 'https://portfolioacv.herokuapp.com/';
->>>>>>> 6439f41844106da1234e604b48bcbce63a2b3d03
   constructor(private http: HttpClient) { }
 
   public obtenerHabilidad(id:number):Observable<IHabilidad> {
