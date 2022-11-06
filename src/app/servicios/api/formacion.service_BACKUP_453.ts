@@ -7,11 +7,7 @@ import { IFormacion } from 'src/app/modelos/IFormacion';
   providedIn: 'root'
 })
 export class FormacionService {
-<<<<<<< HEAD
   private url:string = 'https://portfolioacv.herokuapp.com';
-=======
-  private url:string = 'https://portfolioacv.herokuapp.com/';
->>>>>>> 6439f41844106da1234e604b48bcbce63a2b3d03
   constructor(private http: HttpClient) { }
 
   public obtenerFormacion(id:Number):Observable<IFormacion> {
