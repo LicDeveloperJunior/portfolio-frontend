@@ -22,6 +22,10 @@ export class HabilidadService {
       return this.http.post<IHabilidad>(`${this.url}/habilidad/agregar`,habilidad);
   }
 
+  public agregarHabilidad2(habilidad:IHabilidad, idUsuario:number):Observable<IHabilidad> {
+    return this.http.post<IHabilidad>(`${this.url}/habilidad/agregar/${idUsuario}`, habilidad);
+  }
+
   public actualizarHabilidad(habilidad:IHabilidad):Observable<IHabilidad> {
     return this.http.post<IHabilidad>(`${this.url}/habilidad/editar`, habilidad);
   }

@@ -5,6 +5,8 @@ import { HabilidadService } from 'src/app/servicios/api/habilidad.service';
 import { faTrashCan, faPlus, faPencil } from '@fortawesome/free-solid-svg-icons';
 import { NgForm } from '@angular/forms';
 import { LoginService } from 'src/app/servicios/login/login.service';
+import { UsuarioService } from 'src/app/servicios/api/usuario.service';
+import { IUsuario } from 'src/app/modelos/IUsuario';
 
 @Component({
   selector: 'app-habilidad',
@@ -18,7 +20,8 @@ export class HabilidadComponent implements OnInit {
   editarIcon = faPencil;
   editHabilidad?: IHabilidad;
   constructor(private habilidadService :HabilidadService,
-    private loginService :LoginService) { }
+    private loginService :LoginService,
+    private usuarioService :UsuarioService) { }
 
   ngOnInit(): void {
     this.obtenerHabildades();
@@ -28,7 +31,6 @@ export class HabilidadComponent implements OnInit {
     this.habilidadService.obtenerHabilidades().subscribe({
       next: (response :IHabilidad[]) => {
         this.habilidades = response;
-        console.log(response)
       },
       error: (error :HttpErrorResponse) => {
         alert(error.message);
@@ -37,10 +39,17 @@ export class HabilidadComponent implements OnInit {
   }
 
   public agregarHabilidad(formHab: NgForm) {
-    this.habilidadService.agregarHabilidad(formHab.value).subscribe({
-      next: () => {
-        formHab.reset();
-        this.obtenerHabildades();
+    this.usuarioService.obtenerUsuario().subscribe({
+      next:(response :IUsuario) => {
+        this.habilidadService.agregarHabilidad2(formHab.value, response.id).subscribe({
+          next: () => {
+            formHab.reset();
+            this.obtenerHabildades();
+          },
+          error: (error: HttpErrorResponse) => {
+            alert(error.message);
+          }
+        })
       },
       error: (error: HttpErrorResponse) => {
         alert(error.message);
