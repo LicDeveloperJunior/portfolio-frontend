@@ -8,13 +8,13 @@ import { SobreMiComponent } from './componentes/sobre-mi/sobre-mi.component';
 import { TrabajosComponent } from './componentes/trabajos/trabajos.component';
 
 const routes: Routes = [
-  {path: "inicio", component: InicioComponent },
-  {path: "sobre-mi", component: SobreMiComponent},
-  {path: "formacion", component: FormacionComponent},
-  {path: "trabajos", component: TrabajosComponent},
-  {path: "contacto", component: ContactoComponent},
   {path: "", redirectTo: "/inicio", pathMatch: 'full'},
-  {path: "**", component: PaginaErrorComponent}
+  {path: "inicio", component: InicioComponent, pathMatch: 'full' },
+  {path: "sobre-mi", component: SobreMiComponent, pathMatch: 'full'},
+  {path: "formacion", component: FormacionComponent, pathMatch: 'full'},
+  {path: "trabajos", component: TrabajosComponent, pathMatch: 'full'},
+  {path: "contacto", component: ContactoComponent, pathMatch: 'full'},
+  {path: "**", component: PaginaErrorComponent, pathMatch: 'full'}
 
 ];
 
