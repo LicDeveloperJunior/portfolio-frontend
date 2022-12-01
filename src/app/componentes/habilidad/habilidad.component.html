@@ -27,7 +27,7 @@
   <div class="row">
     <div class="col-12 col-sm-6 hab-item pe-5 pb-3 align-center" *ngFor="let habilidad of this.habilidades">
       <div class="d-flex align-items-baseline justify-content-center">
-        <div class="hab-item d-flex">
+        <div class="hab-item d-flex justify-content-around">
           <p>{{this.habilidad.nombre}}</p>
           <img [src]="this.habilidad.logo" alt="logo-item" width="25px" height="30px" class="mx-2">
         </div>

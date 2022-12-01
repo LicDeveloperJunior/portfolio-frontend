@@ -28,7 +28,6 @@ export class HabilidadComponent implements OnInit {
     this.habilidadService.obtenerHabilidades().subscribe({
       next: (response :IHabilidad[]) => {
         this.habilidades = response;
-        console.log(response)
       },
       error: (error :HttpErrorResponse) => {
         alert(error.message);

@@ -1,24 +1,57 @@
 <section class="espaciado text-center">
   <div class="container p-3">
     <h1>Contáctame</h1>
-    <h3>¿Tienes alguna pregunta?</h3>
-    <h5>Estoy a tu servicio</h5>
-    <div class="row" *ngIf="this.usuario">
-      <div class="col">
+    <h4>¿Tienes alguna pregunta?</h4>
+    <h5 class="fw-lighter">Estoy a tu servicio</h5>
+    <div class="row my-2" *ngIf="this.usuario">
+      <div class="col-4">
         <p>
           <fa-icon [icon]="telef"></fa-icon><br>{{this.usuario.telefono}}
         </p>
       </div>
-      <div class="col">
+      <div class="col-4">
         <p>
           <fa-icon [icon]="lugar"></fa-icon><br>{{this.usuario.domicilio}}
         </p>
       </div>
-      <div class="col">
+      <div class="col-4">
         <p>
-          <fa-icon [icon]="email"></fa-icon><br>{{this.usuario.email}}
+          <fa-icon [icon]="iconoEmail"></fa-icon><br>{{this.usuario.email}}
         </p>
       </div>
     </div>
+  </div>
+
+  <!-- Start Contact Form Reactive-->
+  <div class="d-flex justify-content-center align-items-center">
+    <form (ngSubmit)="enviarCorreo()" [formGroup]="contactForm" class="mx-3 w-50">
+      <div class="my-2">
+        <label for="email" class="form-label">Tu email</label>
+        <input type="email" name="email" class="form-control" id="email" placeholder="example@correo.com" required
+          formControlName="email">
+        <div *ngIf="contactForm.get('email')?.touched && contactForm.get('email')?.errors?.['required']"
+          class="alert alert-danger">Este campo es requerido.</div>
+          <div *ngIf="contactForm.get('email')?.errors?.['email']" class="alert alert-danger">El correo ingresado no es válido.</div>
+      </div>
+      <div class="my-2">
+        <label for="asunto">Asunto</label>
+        <input type="text" name="asunto" class="form-control" id="asunto" placeholder="Asunto" required
+          formControlName="asunto">
+        <div *ngIf="contactForm.get('asunto')?.touched && contactForm.get('asunto')?.errors?.['required']"
+          class="alert alert-danger">Este campo es requerido</div>
+      </div>
+      <div class="my-2">
+        <textarea type="text" name="texto" class="form-control" id="texto" rows="10" required formControlName="texto"></textarea>
+        <div *ngIf="contactForm.get('texto')?.touched && contactForm.get('texto')?.errors?.['required']"
+          class="alert alert-danger">Este campo es requerido.</div>
+          <div *ngIf="contactForm.get('texto')?.errors?.['minlength'] || contactForm.get('texto')?.errors?.['maxlength']" class="alert alert-danger">
+            El comentario no puede ser menor a {{contactForm.get('texto')?.errors?.['minlength']?.requiredLength}} ni puede contener más de {{contactForm.get('texto')?.errors?.['maxlength']?.requiredLength}} caracteres.</div>
+      </div>
+      <button type="submit" class="btn btn-success" [disabled]="contactForm.invalid" (click)="enviarCorreo();modalContacto.toggleModal(); contactForm.reset()">Enviar</button>
+    </form>
+    <!-- End Contact Form Reactive-->
+    <app-modal #modalContacto [titulo]="'¡Gracias por escribirme!'">
+      <p>Tratáre de contestarte lo antes posible :). <br> Qué tengas buen día! Saludos...</p>
+    </app-modal>
   </div>
 </section>

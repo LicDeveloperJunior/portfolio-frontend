@@ -13,7 +13,7 @@ import { TrabajosComponent } from './componentes/trabajos/trabajos.component';
 import { PaginaErrorComponent } from './componentes/pagina-error/pagina-error.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HabilidadComponent } from './componentes/habilidad/habilidad.component';
 import { ModalComponent } from './componentes/modals/modal/modal.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
@@ -40,6 +40,7 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
     FontAwesomeModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth())
   ],

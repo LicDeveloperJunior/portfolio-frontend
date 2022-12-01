@@ -10,37 +10,46 @@
           <form #addForm="ngForm" (ngSubmit)="agregarFormacion(addForm)">
             <div class="form-group">
               <label for="tituloForm">Título</label>
-              <input type="text" ngModel name="titulo" class="form-control" id="tituloForm" placeholder="titulo" required>
+              <input type="text" ngModel name="titulo" class="form-control" id="tituloForm" placeholder="titulo"
+                required>
             </div>
             <div class="form-group">
               <label for="tiempoForm">Tiempo</label>
-              <input type="text" ngModel name="tiempo" class="form-control" id="tiempoForm" placeholder="tiempo" required>
+              <input type="text" ngModel name="tiempo" class="form-control" id="tiempoForm" placeholder="tiempo"
+                required>
             </div>
             <div class="form-group">
               <label for="enlaceForm">Enlace</label>
-              <input type="url" ngModel name="enlace" class="form-control" id="enlaceForm" placeholder="http://www.example.com" required>
+              <input type="url" ngModel name="enlace" class="form-control" id="enlaceForm"
+                placeholder="http://www.example.com" required>
             </div>
             <div class="form-group">
               <label for="imagenForm">URL Imagen</label>
               <input type="url" ngModel name="imagen" class="form-control" id="imagenForm" placeholder="URL" required>
             </div>
           </form>
-          <button class="btn btn-success m-2" type="submit" (click)="agregarFormacion(addForm); modalAgregar.toggleModal()">Agregar</button>
+          <button class="btn btn-success m-2" type="submit"
+            (click)="agregarFormacion(addForm); modalAgregar.toggleModal()">Agregar</button>
         </app-modal>
       </div>
     </div>
-    <div class="row p-3" *ngFor="let formacion of this.formaciones">
-      <div class="col">
-        <img [src]="formacion.imagen" alt="img-item-formacion" width="150px">
-        <h4>{{formacion.titulo}}</h4>
-        <div class="descripcion p-2">
-          <p>{{formacion.tiempo}}</p>
-          <a [href]="formacion.enlace">link</a>
+    <!-- Card Groups -->
+    <div class="card-group d-md-none" *ngFor="let itemForm of this.formaciones">
+      <div class="card rounded bg-transparent">
+        <a [href]="this.itemForm.enlace"><img class="card-img-top" [src]="this.itemForm.imagen"
+            alt="img-item-formacion"></a>
+        <div class="card-body bg-transparent">
+          <h5 class="card-title">{{this.itemForm.titulo}}</h5>
+        </div>
+        <div class="card-footer bg-transparent">
+          <small class="text-muted">{{this.itemForm.tiempo}}</small>
         </div>
       </div>
+      <!-- Start Modals -->
       <div class="d-flex justify-content-center" *ngIf="estaLogeado()">
         <div id="modal-edit">
-          <button class="btn btn-outline-secondary" type="button" (click)="modalEditar.toggleModal(); editFormacion = this.formacion">
+          <button class="btn btn-outline-secondary" type="button"
+            (click)="modalEditar.toggleModal(); editFormacion = this.itemForm">
             <fa-icon [icon]="editarIcon"></fa-icon>
           </button>
           <app-modal #modalEditar [titulo]="'Editar Formacion'">
@@ -52,13 +61,13 @@
               </div>
               <div class="form-group">
                 <label for="tituloHab">Titulo</label>
-                <input type="text" ngModel="{{editFormacion?.titulo}}" name="titulo" class="form-control"
-                  id="tituloHab" placeholder="titulo" required>
+                <input type="text" ngModel="{{editFormacion?.titulo}}" name="titulo" class="form-control" id="tituloHab"
+                  placeholder="titulo" required>
               </div>
               <div class="form-group">
                 <label for="tiempoHab">Tiempo</label>
-                <input type="text" ngModel="{{editFormacion?.tiempo}}" name="tiempo" class="form-control"
-                  id="tiempoHab" placeholder="tiempo" required>
+                <input type="text" ngModel="{{editFormacion?.tiempo}}" name="tiempo" class="form-control" id="tiempoHab"
+                  placeholder="tiempo" required>
               </div>
               <div class="form-group">
                 <label for="urlimagen">URL imagen</label>
@@ -67,11 +76,12 @@
               </div>
               <div class="form-group">
                 <label for="enlaceHab">enlace</label>
-                <input type="url" ngModel="{{editFormacion?.enlace}}" name="enlace" class="form-control"
-                  id="enlaceHab" placeholder="http://www.example.com" required>
+                <input type="url" ngModel="{{editFormacion?.enlace}}" name="enlace" class="form-control" id="enlaceHab"
+                  placeholder="http://www.example.com" required>
               </div>
             </form>
-            <button class="btn btn-success m-2" type="submit" (click)="editarFormacion(editForm); modalEditar.toggleModal()">Editar</button>
+            <button class="btn btn-success m-2" type="submit"
+              (click)="editarFormacion(editForm); modalEditar.toggleModal()">Editar</button>
           </app-modal>
         </div>
         <div id="modal-remove">
@@ -79,13 +89,104 @@
             <fa-icon [icon]="eliminarIcon"></fa-icon>
           </button>
           <app-modal #modalEliminar [titulo]="'Eliminar Formación'">
-            <p>¿Realmente deseas eliminar <b>{{this.formacion.titulo}}</b>?</p>
+            <p>¿Realmente deseas eliminar <b>{{this.itemForm.titulo}}</b>?</p>
             <button class="btn btn-danger m-2" type="submit"
-              (click)="eliminarFormacion(this.formacion.idForm); modalEliminar.toggleModal()">Eliminar</button>
+              (click)="eliminarFormacion(this.itemForm.idForm); modalEliminar.toggleModal()">Eliminar</button>
           </app-modal>
         </div>
       </div>
+      <!-- End Modals -->
     </div>
+    <!-- End Card Groups -->
+    <!-- Start Carrousel -->
+    <div class="container ">
+      <div class="bd-example my-2" *ngFor="let itemForm of this.formaciones">
+        <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carouselExampleCaptions" data-slide-to="0"></li>
+            <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+            <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+            <li data-target="#carouselExampleCaptions" data-slide-to="3"></li>
+            <li data-target="#carouselExampleCaptions" data-slide-to="4"></li>
+            <li data-target="#carouselExampleCaptions" data-slide-to="5"></li>
+            <li data-target="#carouselExampleCaptions" data-slide-to="6"></li>
+            <li data-target="#carouselExampleCaptions" data-slide-to="7"></li>
+            <li data-target="#carouselExampleCaptions" data-slide-to="8"></li>
+            <li data-target="#carouselExampleCaptions" data-slide-to="9"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img [src]="this.itemForm.imagen" class="d-block w-100" alt="img-item-formacion">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>{{this.itemForm.titulo}}</h5>
+                <small class="text-muted">{{this.itemForm.tiempo}}</small>
+                <a [href]="this.itemForm.enlace" class="btn"></a>
+              </div>
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+        <!-- Start Modals -->
+        <div class="d-flex justify-content-center" *ngIf="estaLogeado()">
+          <div id="modal-edit">
+            <button class="btn btn-outline-secondary" type="button"
+              (click)="modalEditar.toggleModal(); editFormacion = this.itemForm">
+              <fa-icon [icon]="editarIcon"></fa-icon>
+            </button>
+            <app-modal #modalEditar [titulo]="'Editar Formacion'">
+              <form #editForm="ngForm" (ngSubmit)="editarFormacion(editForm)">
+                <div class="form-group">
+                  <label for="idForm">Id</label>
+                  <input type="hidden" ngModel="{{editFormacion?.idForm}}" name="idForm" class="form-control"
+                    id="idForm" placeholder="id" required>
+                </div>
+                <div class="form-group">
+                  <label for="tituloHab">Titulo</label>
+                  <input type="text" ngModel="{{editFormacion?.titulo}}" name="titulo" class="form-control"
+                    id="tituloHab" placeholder="titulo" required>
+                </div>
+                <div class="form-group">
+                  <label for="tiempoHab">Tiempo</label>
+                  <input type="text" ngModel="{{editFormacion?.tiempo}}" name="tiempo" class="form-control"
+                    id="tiempoHab" placeholder="tiempo" required>
+                </div>
+                <div class="form-group">
+                  <label for="urlimagen">URL imagen</label>
+                  <input type="url" ngModel="{{editFormacion?.imagen}}" name="imagen" class="form-control"
+                    id="urlimagen" placeholder="imagen" required>
+                </div>
+                <div class="form-group">
+                  <label for="enlaceHab">enlace</label>
+                  <input type="url" ngModel="{{editFormacion?.enlace}}" name="enlace" class="form-control"
+                    id="enlaceHab" placeholder="http://www.example.com" required>
+                </div>
+              </form>
+              <button class="btn btn-success m-2" type="submit"
+                (click)="editarFormacion(editForm); modalEditar.toggleModal()">Editar</button>
+            </app-modal>
+          </div>
+          <div id="modal-remove">
+            <button class="btn btn-outline-danger" type="button" (click)="modalEliminar.toggleModal()">
+              <fa-icon [icon]="eliminarIcon"></fa-icon>
+            </button>
+            <app-modal #modalEliminar [titulo]="'Eliminar Formación'">
+              <p>¿Realmente deseas eliminar <b>{{this.itemForm.titulo}}</b>?</p>
+              <button class="btn btn-danger m-2" type="submit"
+                (click)="eliminarFormacion(this.itemForm.idForm); modalEliminar.toggleModal()">Eliminar</button>
+            </app-modal>
+          </div>
+        </div>
+        <!-- End Modals -->
+      </div>
+    </div>
+    <!-- End Carrousel -->
   </div>
 </section>
 <app-trabajos></app-trabajos>

@@ -1,9 +1,9 @@
 import {ITema} from "./itema-interface"
 export const TEMAS: ITema = {
   default: {
-    colorFuerte: '#005227',
-    colorDebil: '#038554',
-    textoPrimario: '#dfdfcc',
+    colorFuerte: '#ffffff',
+    colorDebil: '#5dade2',
+    textoPrimario: '#00013a',
     textoChico: '1.2em',
     textoMediano: '1.4em',
     textoGrande: '1.8em'
