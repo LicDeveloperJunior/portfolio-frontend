@@ -2,7 +2,7 @@
   height: 100%;
   width: 0;
   position: fixed;
-  z-index: 1;
+  z-index: 2;
   top: 0;
   left: 0;
   background: linear-gradient(var(--colorDebil), var(--colorFuerte));
@@ -13,8 +13,8 @@
   .closebtn {
     display: none;
     position: absolute;
-    top: 110px;
-    right: 25px;
+    top: 235px;
+    right: 15px;
     font-size: 30px;
     color: var(--textoPrimario);
   }
@@ -55,14 +55,15 @@
   display: none;
   font-size: 20px;
   cursor: pointer;
-  background-color: var(--colorFuerte);
+  background-color: transparent;
   color: var(--textoPrimario);
   padding: 10px 15px;
   border: none;
   position: fixed;
   top: 50%;
   width: 50px;
-  opacity: 0.5;
+  opacity: 0.8;
+  z-index: 1;
 }
 
 .openbtn:hover {

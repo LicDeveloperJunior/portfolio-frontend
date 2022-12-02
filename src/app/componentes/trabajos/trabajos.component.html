@@ -3,7 +3,7 @@
     <h1>Portfolio</h1>
   </div>
   <div class="container">
-    <div class="titulo d-flex justify-content-center">
+    <div class="titulo d-flex justify-content-center align-items-baseline">
       <h3>Mis últimos proyectos</h3>
       <div *ngIf="estaLogeado()">
         <button class="btn btn-outline-success mx-3" type="button" (click)="modalAgregar.toggleModal()">
@@ -35,8 +35,8 @@
     <!-- Card Group -->
     <div class="card text-center row bg-transparent" *ngFor="let proyecto of this.trabajos">
       <div class="card-body">
-        <h5 class="card-title">{{proyecto.nombre}}</h5>
-        <img [src]="proyecto.imagen" alt="item-proyecto" class="card-img">
+        <h5 class="card-title"><s><em>{{proyecto.nombre}}</em></s></h5>
+        <img [src]="proyecto.imagen" alt="item-proyecto" class="card-img my-2">
         <p class="card-text">{{proyecto.descripcion}}</p>
         <a href="https://github.com/LicDeveloperJunior" class="btn btn-primary">
           <fa-icon [icon]="githubIcon"></fa-icon> Ir al Repo

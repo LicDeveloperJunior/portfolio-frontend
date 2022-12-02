@@ -3,18 +3,18 @@
     <h1>Contáctame</h1>
     <h4>¿Tienes alguna pregunta?</h4>
     <h5 class="fw-lighter">Estoy a tu servicio</h5>
-    <div class="row my-2" *ngIf="this.usuario">
-      <div class="col-4">
+    <div class="row my-2 align-items-center" *ngIf="this.usuario">
+      <div class="col-12 col-md-4">
         <p>
           <fa-icon [icon]="telef"></fa-icon><br>{{this.usuario.telefono}}
         </p>
       </div>
-      <div class="col-4">
+      <div class="col-12 col-md-4">
         <p>
           <fa-icon [icon]="lugar"></fa-icon><br>{{this.usuario.domicilio}}
         </p>
       </div>
-      <div class="col-4">
+      <div class="col-12 col-md-4">
         <p>
           <fa-icon [icon]="iconoEmail"></fa-icon><br>{{this.usuario.email}}
         </p>
@@ -23,8 +23,8 @@
   </div>
 
   <!-- Start Contact Form Reactive-->
-  <div class="d-flex justify-content-center align-items-center">
-    <form (ngSubmit)="enviarCorreo()" [formGroup]="contactForm" class="mx-3 w-50">
+  <div class="d-flex justify-content-center align-items-center mb-4">
+    <form (ngSubmit)="enviarCorreo(contactForm)" [formGroup]="contactForm" class="mx-3 w-50">
       <div class="my-2">
         <label for="email" class="form-label">Tu email</label>
         <input type="email" name="email" class="form-control" id="email" placeholder="example@correo.com" required
@@ -44,14 +44,16 @@
         <textarea type="text" name="texto" class="form-control" id="texto" rows="10" required formControlName="texto"></textarea>
         <div *ngIf="contactForm.get('texto')?.touched && contactForm.get('texto')?.errors?.['required']"
           class="alert alert-danger">Este campo es requerido.</div>
-          <div *ngIf="contactForm.get('texto')?.errors?.['minlength'] || contactForm.get('texto')?.errors?.['maxlength']" class="alert alert-danger">
-            El comentario no puede ser menor a {{contactForm.get('texto')?.errors?.['minlength']?.requiredLength}} ni puede contener más de {{contactForm.get('texto')?.errors?.['maxlength']?.requiredLength}} caracteres.</div>
+          <div *ngIf="contactForm.get('texto')?.errors?.['minlength']" class="alert alert-danger">
+            El comentario debe tener más de {{contactForm.get('texto')?.errors?.['minlength']?.requiredLength}} caracteres.</div>
+            <div *ngIf="contactForm.get('texto')?.errors?.['maxlength']" class="alert alert-danger">
+              El comentario no puede superar los {{contactForm.get('texto')?.errors?.['maxlength']?.requiredLength}} caracteres.</div>
       </div>
-      <button type="submit" class="btn btn-success" [disabled]="contactForm.invalid" (click)="enviarCorreo();modalContacto.toggleModal(); contactForm.reset()">Enviar</button>
+      <button type="submit" class="btn btn-success" [disabled]="contactForm.invalid" (click)="enviarCorreo(contactForm)">Enviar</button>
     </form>
     <!-- End Contact Form Reactive-->
     <app-modal #modalContacto [titulo]="'¡Gracias por escribirme!'">
-      <p>Tratáre de contestarte lo antes posible :). <br> Qué tengas buen día! Saludos...</p>
+      <p>Tratáre de contestarte lo antes posible :). <br> Qué tengas buen día!...</p>
     </app-modal>
   </div>
 </section>

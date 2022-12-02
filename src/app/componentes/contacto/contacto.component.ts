@@ -1,11 +1,11 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { faMobileScreenButton, faLocationDot, faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import { Observable } from 'rxjs';
 import { IUsuario } from 'src/app/modelos/IUsuario';
 import { ContactFormService } from 'src/app/servicios/api-correo/contact-form.service';
 import { UsuarioService } from 'src/app/servicios/api/usuario.service';
+import { ModalComponent } from '../modals/modal/modal.component';
 
 @Component({
   selector: 'app-contacto',
@@ -13,6 +13,8 @@ import { UsuarioService } from 'src/app/servicios/api/usuario.service';
   styleUrls: ['./contacto.component.less']
 })
 export class ContactoComponent implements OnInit {
+  @ViewChild('modalContacto') modalContact! :ModalComponent;
+  @ViewChild('modalErrorContacto') modalErrorContact! :ModalComponent;
   usuario?: IUsuario;
   telef = faMobileScreenButton;
   lugar = faLocationDot;
@@ -20,7 +22,8 @@ export class ContactoComponent implements OnInit {
 
   contactForm! :FormGroup;
 
-  constructor(private usuarioService: UsuarioService, private readonly fb :FormBuilder, private formContactService :ContactFormService) { }
+  constructor(private usuarioService: UsuarioService, private readonly fb :FormBuilder,
+     private formContactService :ContactFormService) { }
 
   ngOnInit(): void {
     this.obtenerUsuario();
@@ -46,15 +49,9 @@ export class ContactoComponent implements OnInit {
     })
   }
 
-  enviarCorreo() {
-    console.log('form: ', this.contactForm.value);
-    this.formContactService.enviarCorreo(this.contactForm.value).subscribe({
-      next: (response :any) => {
-        console.log(response);
-      },
-      error: (error: HttpErrorResponse) => {
-        alert(error.message)
-      }
-    })
+  enviarCorreo(correo :FormGroup) {
+    this.formContactService.enviarCorreo(correo);
+    this.modalContact.toggleModal();
+    correo.reset();
   }
 }
